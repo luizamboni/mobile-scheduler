@@ -28,9 +28,7 @@ class AppState(TypedDict):
 class NodeState(TypedDict):
     apps: Optional[List[AppState]]
     available_memory_in_mb: int
-    battery_in_percent: float
+    battery_in_percent: int
     cpu_count: int 
-    cpu_percent: float
     id: str 
     is_master: bool
-    physical_cpu: int

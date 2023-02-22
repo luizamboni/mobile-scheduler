@@ -4,7 +4,6 @@ from flask import Flask,request
 from uuid import uuid4
 from core import App, ServerStats, MACClient, Scheduler, NodeState, AppState
 from typing import List, Union, TypedDict, Literal
-import psutil
 host = os.getenv("HOST", '')
 port = int(os.getenv("PORT", '8000'))
 raw_hosts = os.getenv("WORKERS", '')
@@ -25,7 +24,7 @@ if len(workers_hosts) > 0:
 app = Flask(node_name)
 
 
-server_stats = ServerStats(node_name, is_master)
+server_stats = ServerStats(node_name, is_master, 2000)
 mac_client = MACClient(workers_hosts)
 
 scheduler = Scheduler(
