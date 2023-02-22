@@ -1,0 +1,3 @@
+apps
+.venv
+.mypy_cache

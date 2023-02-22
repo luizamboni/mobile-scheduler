@@ -1,0 +1,25 @@
+version: '3.0'
+services:
+  master:
+    build: ./app/
+    ports:
+      - 8000:8000
+    environment:
+      HOST: 0.0.0.0
+      PORT: 8000
+      WORKERS: 'http://worker-1:8000,http://worker-2:8000'
+    command: python3 /app/server.py
+
+  worker-1:
+    build: ./app/
+    environment:
+      HOST: 0.0.0.0
+      PORT: 8000
+    command: python3 /app/server.py
+
+  worker-2:
+    build: ./app/
+    environment:
+      HOST: 0.0.0.0
+      PORT: 8000
+    command: python3 /app/server.py
