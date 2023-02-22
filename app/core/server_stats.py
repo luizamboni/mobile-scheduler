@@ -26,7 +26,7 @@ class ServerStats():
         try:
             res = subprocess.run(["cat", "/proc/meminfo"], capture_output=True, text=True)
             if res.stdout:
-                memory_info = list(map(lambda v: v.split(),  res.stdout))
+                memory_info = list(map(lambda v: v.split(),  res.stdout.split("\n")))
                 print(memory_info)
 
                 for key, value, _ in memory_info:
